@@ -4,7 +4,6 @@ import { RouterOutlet } from '@angular/router';
 import { BankAccountComponent } from './components/bank-account.component';
 import { HeadingComponent } from './components/heading/heading.component';
 import { NavigationComponent } from "./components/navigation/navigation.component";
-import { HeadingComponent_1 as HeadingComponent } from "./complonents/heading/heading.component";
 
 
 @Component({
@@ -15,7 +14,7 @@ import { HeadingComponent_1 as HeadingComponent } from "./complonents/heading/he
   imports: [CommonModule,
     RouterOutlet,
     BankAccountComponent,
-    HeadingComponent, NavigationComponent, HeadingComponent]
+    HeadingComponent, NavigationComponent]
 })
 export class AppComponent {
 
