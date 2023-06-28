@@ -3,5 +3,11 @@
 
 GET http://localhost:1338/shopping-list
 
-POST
 
+### 
+POST http://localhost:1338/shopping-list
+Content-Type: application/json
+
+{
+  "description": "Ketchup"
+}
