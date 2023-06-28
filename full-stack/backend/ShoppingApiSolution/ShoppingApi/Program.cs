@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using ShoppingApi.Controllers;
+using ShoppingApi.Data;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +12,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var shoppingConnectionString = builder.Configuration.GetConnectionString("shopping") ?? throw new Exception("No Connection String for Shopping");
+
+builder.Services.AddDbContext<ShoppingDataContext>(options =>
+{
+    options.UseNpgsql(shoppingConnectionString);
+});
+
+builder.Services.AddTransient<ILookupTheStatus, StatusLookup>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -15,6 +29,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
 
 app.UseAuthorization();
 

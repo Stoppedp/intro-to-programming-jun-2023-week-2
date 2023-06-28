@@ -1,0 +1,23 @@
+﻿namespace ShoppingApi.Models;
+
+
+
+
+public record ShoppingListItemModel
+{
+    public string Id { get; set; } = string.Empty;
+    public string Description { get; init; } = string.Empty;
+    public bool Purchased { get; init; }
+
+    public DateTimeOffset DateAdded { get; set; }
+}
+
+
+
+
+
+public record CollectionResponse<T>
+{
+  
+    public List<T> Data { get; set; } = new();
+}
