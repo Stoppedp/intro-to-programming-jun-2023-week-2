@@ -4,8 +4,6 @@ import { RouterModule } from '@angular/router';
 import { CreateComponent } from './components/create/create.component';
 import { ListComponent } from './components/list/list.component';
 import { ShoppingListItemModel } from './models';
-import { Store } from '@ngrx/store';
-import { ShoppingFeatureEvents } from './state/feature.actions';
 
 @Component({
   selector: 'app-shopping-list',
@@ -14,11 +12,7 @@ import { ShoppingFeatureEvents } from './state/feature.actions';
   styleUrls: ['./shopping-list.component.css'],
   imports: [CommonModule, RouterModule, CreateComponent, ListComponent],
 })
-
 export class ShoppingListComponent {
-  constructor(private store:Store) {
-    store.dispatch(ShoppingFeatureEvents.entered());
-  }
   shoppingList = signal([
     { id: '1', description: 'Shampoo', purchased: false },
     { id: '2', description: 'Lettuce', purchased: true },

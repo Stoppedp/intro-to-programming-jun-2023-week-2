@@ -23,15 +23,6 @@ builder.Services.AddDbContext<ShoppingDataContext>(options =>
 builder.Services.AddScoped<ILookupTheStatus, StatusLookup>();
 builder.Services.AddScoped<IManageTheShoppingList, PostgresShoppingManager>();
 
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
 builder.Services.AddCors(builder =>
 {
     builder.AddDefaultPolicy(pol =>
@@ -42,7 +33,17 @@ builder.Services.AddCors(builder =>
     });
 });
 
+var app = builder.Build();
 
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+
+app.UseCors(); // Handle the whole cors thing while it is running.
 app.UseAuthorization();
 
 app.MapControllers();
